@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Scripture</title>
+
+    <script>
+      const applyScripture = function () {
+        const name = document.getElementById("nameInputBox").value;
+
+        const scripture = `Blessed art thou, ${name}, and blessed are they who were baptized in the waters of Mormon. Thou art blessed because of thy exceeding faith in the words alone of my servant Abinadi`;
+
+        document.getElementById("outputDiv").innerHTML = scripture;
+      };
+    </script>
+  </head>
+
+  <body>
+    Please enter your name: <input type="text" id="nameInputBox" />
+
+    <button type="button" onclick="applyScripture()">
+      Get a customized verse
+    </button>
+
+    <div id="outputDiv"></div>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Greeting</title>
+
+    <script>
+      const greetUser = function () {
+        const name = prompt("Please enter your name");
+
+        const greeting = `Welcome, ${name}! Don't forget to smile today :)`;
+
+        alert(greeting);
+      };
+    </script>
+  </head>
+
+  <body>
+    <button type="button" onclick="greetUser()">Hello</button>
+  </body>
+</html>

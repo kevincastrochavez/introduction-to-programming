@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Discounts</title>
+
+    <style>
+      body {
+        height: 150px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .container {
+        width: 300px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      input {
+        width: 150px;
+        padding: 10px;
+        border: 2px solid lightgray;
+        border-radius: 5px;
+        outline-width: 0;
+      }
+
+      button {
+        width: 100px;
+        padding: 5px;
+      }
+    </style>
+
+    <script>
+      "use strict";
+
+      /* Defining Table
+       * Input: Subtotal introduced by the user
+       * Processing: Determine if the subtotal is greater than 50
+       * and if the day of the week is Tuesday or Wednesday. If that's
+       * the case, apply a 10% discount. Then, add the sales tax (6%)
+       * to the subtotal
+       * Output: A message indicating the total
+       */
+
+      function getTotal() {
+        // Selects the element where the message will be displayed
+        const message = document.querySelector("h2");
+
+        // Gets the subtotal value introduced by the user
+        let subtotal = Number(document.querySelector("input").value);
+        // Gets the day of the week from the computer's clock
+        const dayOfWeek = new Date().getDay();
+        // Declares a variable that will store the total
+        let total;
+
+        // Checks if the subtotal is greater than 50 and if the day
+        // of the week is Tuesday or Wednesday
+        if (subtotal > 50 && (dayOfWeek === 2 || dayOfWeek === 3)) {
+          // If the above is true, applies the 10% discount
+          subtotal *= 0.9;
+          // Adds the sales tax to the subtotal
+          total = (subtotal += subtotal * 0.06).toFixed(2);
+        } else {
+          // If it's not Tuesday or Wednesday, just adds the
+          // sales tax to the subtotal
+          total = (subtotal += subtotal * 0.06).toFixed(2);
+        }
+
+        // Inserts the message in the HTML
+        message.innerHTML = `Your total is $${total}`;
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <input placeholder="Subtotal $" />
+      <button onclick="getTotal()">Get Total</button>
+    </div>
+
+    <h2></h2>
+  </body>
+</html>

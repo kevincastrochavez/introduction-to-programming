@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Foot Wear</title>
+    <style>
+      * {
+        margin: 0;
+      }
+
+      body {
+        padding: 40px;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .container {
+        height: 120px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      select {
+        font-size: 1em;
+        padding: 5px;
+        width: 200px;
+        height: 50px;
+        outline-width: 0;
+      }
+
+      button {
+        width: 150px;
+        padding: 5px;
+      }
+
+      p {
+        font-size: 18px;
+      }
+    </style>
+
+    <script>
+      "use strict";
+
+      /* Defining Table
+       * Input: Day's weather
+       * Processing: Determine what to wear based on the chosen weather
+       * Output: Correct footwear
+       */
+
+      function getFootwear() {
+        // Selects the value introduced by the user and the
+        // element where the message will be displayed
+        const weather = document.getElementById("weather").value;
+        const message = document.querySelector("p");
+        // Declares a variable to store the footwear
+        let footwear;
+
+        // Assigns the correct value to the footwear variable
+        // based on the value introduced by the user
+        if (weather === "hot") {
+          footwear = "Sandals";
+        } else if (weather === "rain") {
+          footwear = "Galoshes";
+        } else if (weather === "snow") {
+          footwear = "Boots";
+        } else {
+          footwear = "Shoes";
+        }
+
+        // Inserts the message
+        message.innerHTML = `${footwear} are the best option for today`;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Wondering what to wear?</h1>
+
+    <h2>Select today's weather</h2>
+
+    <div class="container">
+      <select id="weather">
+        <option value="hot">Hot</option>
+        <option value="rain">Rain</option>
+        <option value="snow">Snow</option>
+        <option value="wind">Wind</option>
+        <option value="humid">Humid</option>
+        <option value="foggy">Foggy</option>
+        <option value="dark">Dark</option>
+      </select>
+
+      <button onclick="getFootwear()">Get appropiate Foot Wear</button>
+    </div>
+
+    <p></p>
+  </body>
+</html>

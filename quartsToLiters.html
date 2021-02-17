@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Convert quarts to liters</title>
+    <style>
+      * {
+        margin: 0;
+      }
+
+      body {
+        padding: 30px;
+        height: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      h2 {
+        max-width: 500px;
+      }
+
+      form {
+        height: 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      input {
+        width: 100%;
+        max-width: 100px;
+        padding: 10px;
+        outline-width: 0;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+      }
+
+      button {
+        width: 80px;
+        padding: 5px;
+      }
+
+      p {
+        font-size: 1.1em;
+      }
+    </style>
+
+    <script>
+      "use strict";
+
+      /* Defining Table
+       * Input: Quarts
+       * Processing: Convert quarts to liters
+       * Output: Liters
+       */
+
+      const quartsToLiters = function (e) {
+        // Prevents the page to reload when clicked the button
+        e.preventDefault();
+
+        // If a result was already obtained, cleans
+        // the paragraph before showing the next result
+        // so they don't stack over each other
+        document.querySelector("p").innerHTML = "";
+
+        // Gets the number that was introduced in the input
+        const quarts = document.querySelector(".quarts").value;
+        // Computes the calculation, sets the result
+        // to maximum 2 decimals and stores it
+        const liters = (quarts / 1.0567).toFixed(2);
+
+        // Creates the message that'll be inserted
+        const html = `You have ${liters} liters`;
+        // Selects the HTML element where the message
+        // will be inserted
+        const paragraph = document.querySelector("p");
+        // Inserts the message on the HTML element
+        paragraph.insertAdjacentHTML("beforeend", html);
+
+        // Cleans the input so it's empty when the
+        // button is clicked
+        document.querySelector(".quarts").value = "";
+      };
+    </script>
+  </head>
+  <body>
+    <h2>Introduce the quarts you want to convert to liters</h2>
+
+    <form>
+      <input type="text" placeholder="Quarts" class="quarts" />
+      <button onclick="quartsToLiters(event)">Convert</button>
+    </form>
+
+    <p></p>
+  </body>
+</html>

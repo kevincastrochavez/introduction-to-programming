@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Alarm</title>
+
+    <style>
+      body {
+        padding: 30px;
+      }
+
+      button {
+        padding: 10px;
+      }
+    </style>
+
+    <script>
+      "use strict";
+
+      /* Defining Table
+       * Input: Date extracted from the computer's clock
+       * Processing: Determine, based on the day of the week
+       * and the holidays given, what message should be displayed
+       * Output: "Get up" for weekdays and "Sleep in" for holidays
+       * and weekends
+       */
+
+      function getTotal() {
+        // Selects the element where the message will be displayed
+        const message = document.querySelector("h2");
+
+        // Gets the current date from the computer, and then gets
+        // the month, day of the month and day of the week separately
+        // from the date
+        const now = new Date();
+        const month = now.getMonth();
+        const dayOfMonth = now.getDate();
+        const dayOfWeek = now.getDay();
+
+        // Checks if the day of the week is a weekday
+        if (dayOfWeek > 0 && dayOfWeek < 6) {
+          // Checks if the weekday is any of the holidays by
+          // comparing the month and the day of the month
+          if (
+            (month === 0 && dayOfMonth === 1) ||
+            (month === 6 && dayOfMonth === 4) ||
+            (month === 11 && dayOfMonth === 25)
+          ) {
+            // In that case, displays the following message
+            message.innerHTML = "Sleep in \u{1F4A4}";
+          } else {
+            // If the weekday is not a holiday, displays the
+            // following
+            message.innerHTML = "Get up \u{1F9D1}\u200D\u{1F4BC}";
+          }
+        } else {
+          // If the day of the week is not a week day, displays
+          // the following
+          message.innerHTML = "Sleep in \u{1F4A4}";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <button onclick="getTotal()">Alarm</button>
+
+    <h2></h2>
+  </body>
+</html>

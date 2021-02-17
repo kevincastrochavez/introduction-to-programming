@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Math Quiz</title>
+    <style>
+      * {
+        margin: 0;
+      }
+
+      body {
+        padding: 40px;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      form {
+        height: 120px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .operations {
+        width: 400px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      input {
+        width: 60px;
+        outline-width: 0;
+        padding: 10px;
+        border: 2px solid lightgray;
+        border-radius: 5px;
+      }
+
+      select {
+        font-size: 1.2em;
+        padding: 6px;
+        width: 50px;
+        outline-width: 0;
+        border-radius: 5px;
+      }
+
+      button {
+        width: 100px;
+        padding: 5px;
+      }
+    </style>
+
+    <script>
+      "use strict";
+
+      /* Defining Table
+       * Input: Two numbers to compute a calculation, 
+       an operator that will be part of the calculation
+       and the result expected by the user
+       * Processing: Compute the correct calculation with the
+       two numbers introduced and based on the operator chosen.
+       Then, check if the result expected by the user is equal
+       to the real result of the calculation
+       * Output: A string indicated whether the calculation was
+       right or wrong
+       */
+
+      function getCalculation(e) {
+        // Prevents the page to reload when clicked the button
+        // This is because I used a form in the HTML
+        e.preventDefault();
+
+        // Selects the element where the message will be displayed
+        const output = document.querySelector("p");
+
+        // Gets the values of the inputs introduced by the user (the
+        // first number, the operator for the calculation, the second
+        // number and the result expected by the user)
+        const firstNum = Number(document.getElementById("firstNum").value);
+        const secondNum = Number(document.getElementById("secondNum").value);
+        const operator = document.getElementById("operator").value;
+        const userResult = document.getElementById("result").value;
+
+        // Declares a variable to store the result for the calculation
+        let realResult;
+
+        // Assigns a value to the realResult variable based on the
+        // operator chosen by the user and computes the
+        // corresponding calculations with the numbers introduced
+        switch (operator) {
+          case "+":
+            realResult = firstNum + secondNum;
+            break;
+          case "-":
+            realResult = firstNum - secondNum;
+            break;
+          case "*":
+            realResult = firstNum * secondNum;
+            break;
+          case "/":
+            realResult = firstNum / secondNum;
+            break;
+          default:
+            break;
+        }
+
+        // Checks if the calculation result is equal to the result
+        // expected by the user and displays a message accordingly.
+        // The rare code in the strings are just emojis
+        if (userResult == realResult) {
+          output.innerHTML = "Correct! Good job \u2714\uFE0F";
+        } else {
+          output.innerHTML = "Try again! \u{1F4AA}";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Test your Math Skills!</h1>
+
+    <form>
+      <div class="operations">
+        <input id="firstNum" placeholder="#" />
+
+        <select id="operator">
+          <option value="+">+</option>
+          <option value="-">-</option>
+          <option value="*">*</option>
+          <option value="/">/</option>
+        </select>
+
+        <input id="secondNum" placeholder="#" />
+
+        <span>=</span>
+
+        <input id="result" placeholder="Result" />
+      </div>
+
+      <button onclick="getCalculation(event)">Check</button>
+    </form>
+
+    <p></p>
+  </body>
+</html>

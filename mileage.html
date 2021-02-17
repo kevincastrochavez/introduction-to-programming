@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Miles per gallon</title>
+    <style>
+      * {
+        margin: 0;
+      }
+
+      body {
+        padding: 30px;
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      form {
+        height: 250px;
+        width: 190px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      }
+
+      .info p {
+        margin-bottom: 8px;
+      }
+
+      .inputs-container {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      input {
+        max-width: 50px;
+        padding: 10px;
+        outline-width: 0;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+      }
+
+      button {
+        width: 70px;
+        padding: 5px;
+      }
+
+      p {
+        font-size: 1.1em;
+      }
+    </style>
+
+    <script>
+      "use strict";
+
+      /* Defining Table
+       * Input: Initial and final odometer readings and
+         amount of gasoline used
+       * Processing: Substract the initial reading to the final one, and
+         divide that by the gallons
+       * Output: Miles per gallon
+       */
+
+      const getMileagePerGallon = function (e) {
+        // Prevents the page to reload when clicked the button
+        e.preventDefault();
+
+        // If a result was already obtained, cleans
+        // that paragraph before showing the next result
+        // so they don't stack over each other
+        document.querySelector(".output").innerHTML = "";
+
+        // Gets the number of the initial reading
+        const initialReading = document.getElementById("initial").value;
+        // Gets the number of the final reading
+        const finalReading = document.getElementById("final").value;
+        // Gets the number of the number of gallons
+        const gasolineUsed = document.getElementById("gasoline").value;
+
+        // Computes the calculation, sets the result
+        // to maximum 2 decimals and stores it
+        const milesPerGallon = (
+          (finalReading - initialReading) /
+          gasolineUsed
+        ).toFixed(2);
+
+        // Selects the HTML element where the message
+        // will be inserted
+        const paragraph = document.querySelector(".output");
+        // Creates the message that'll be inserted and prevents
+        // if the user introduces nothing
+        const html = `${
+          milesPerGallon === "NaN" ? 0 : milesPerGallon
+        } miles per gallon`;
+        // Inserts the message on the HTML element
+        paragraph.insertAdjacentHTML("beforeend", html);
+
+        // Cleans all the inputs so they're empty when the
+        // button is clicked
+        document
+          .querySelectorAll("input")
+          .forEach((input) => (input.value = ""));
+      };
+    </script>
+  </head>
+  <body>
+    <h2>Mileage of a vehicle</h2>
+
+    <form>
+      <div class="info">
+        <p>Odometer readings (miles)</p>
+
+        <div class="inputs-container">
+          <input type="text" placeholder="Initial" id="initial" />
+          <input type="text" placeholder="Final" id="final" />
+        </div>
+      </div>
+
+      <div class="info">
+        <p>Gasoline used (gallons)</p>
+        <input type="text" placeholder="#" id="gasoline" />
+      </div>
+
+      <button onclick="getMileagePerGallon(event)">Get</button>
+    </form>
+
+    <p class="output"></p>
+  </body>
+</html>
