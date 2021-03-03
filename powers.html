@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Powers</title>
+    <style>
+      div {
+        padding: 20px 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+
+    <script>
+      "use strict";
+
+      /* Defining Table
+       * Input: Nothing
+       * Processing: Display the calculation of 2 elevated to the
+       * power of n, being n from 0 to 31
+       * Output: The result of 2 ** n
+       */
+
+      function displayPowers() {
+        // Selects the element where the message will be displayed
+        const container = document.querySelector("div");
+
+        // Initializes the loop, setting the iterator variable equal to 0,
+        // increasing the variable i by one with each iteration
+        // and looping through each number until i it's less than 32
+        for (let i = 0; i < 32; i++) {
+          // Creates the markup and computes the calculation
+          const operation = `<p>${2 ** i}</p>`;
+          // Inserts the markup into the div
+          container.insertAdjacentHTML("beforeend", operation);
+        }
+      }
+
+      // Since we are calling the function immediately, the script
+      // has to go after the HTML. Otherwise, it would throw an error
+      displayPowers();
+    </script>
+  </body>
+</html>

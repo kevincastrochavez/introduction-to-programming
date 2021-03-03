@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Five Times</title>
+    <style>
+      div {
+        padding: 20px 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+
+    <script>
+      "use strict";
+
+      /* Defining Table
+       * Input: Nothing
+       * Processing: Display the calculation multiplying 5
+       * times n, being n from 1 to 12
+       * Output: A format "5 x n = #"
+       */
+
+      function displayTable() {
+        // Selects the element where the message will be displayed
+        const table = document.querySelector("div");
+
+        // Initializes the loop, setting the iterator variable equal to 1,
+        // increasing the variable i by one with each iteration
+        // and looping through each number until i it's less than 13
+        for (let i = 1; i < 13; i++) {
+          // Creates the markup and computes the calculation
+          const operation = `<p>5 x ${i} = ${5 * i}</p>`;
+          // Inserts the markup into the div
+          table.insertAdjacentHTML("beforeend", operation);
+        }
+      }
+
+      // Since we are calling the function immediately, the script
+      // has to go after the HTML. Otherwise, it would throw an error
+      displayTable();
+    </script>
+  </body>
+</html>

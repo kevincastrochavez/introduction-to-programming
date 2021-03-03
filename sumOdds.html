@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sum Odds</title>
+    <style>
+      body {
+        color: #414a4c;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 200px;
+      }
+
+      input {
+        padding: 5px;
+        width: 100px;
+        border: 2px solid lightgray;
+        border-radius: 5px;
+        outline-width: 0;
+      }
+
+      button {
+        padding: 5px;
+        margin-left: 20px;
+      }
+    </style>
+
+    <script>
+      "use strict";
+
+      /* Defining Table
+       * Input: Integer introduced by the user
+       * Processing: Determine if the integer is and odd number, and sum
+       * all the odd numbers between 1 and the integer introduced
+       * Output: A sum of integers
+       */
+
+      function getSum() {
+        // Selects the element where the message will be displayed
+        const message = document.querySelector("h2");
+        // Gets the number introduced by the user
+        const number = document.querySelector("input").value;
+        // Declares and assigns the variable that will store the sum
+        let sum = 0;
+
+        // Initializes the loop, setting the iterator variable equal to 0,
+        // increasing the variable i by one with each iteration
+        // and looping through each number until i it's less or equal
+        // to the number introduced
+        for (let i = 0; i <= number; i++) {
+          // Checks if the modulus of the number in the actual iteration
+          // is equal to 1 (that means it is an odd number)
+          if (i % 2 === 1) {
+            // In that case, adds its value to the sum variable
+            sum += i;
+          }
+        }
+
+        // Inserts the message in the HTML
+        message.innerHTML = sum;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Enter an interger</h1>
+
+    <div class="container">
+      <input placeholder="#" />
+
+      <button onclick="getSum()">Get Sum</button>
+    </div>
+
+    <h2></h2>
+  </body>
+</html>
