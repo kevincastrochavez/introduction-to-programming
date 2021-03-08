@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <title>Title</title>
+    <script>
+      "use strict";
+
+      /* Input: two numbers introduced by the user
+       * Processing: determine if both of the numbers introduced are
+       greater that 5, or if their sum is greater than 20. In that case,
+       outpput a message "True", otherwise, output a message "False"
+       * Output: A string with either "True" or "False"
+       */
+
+      function displayStatement() {
+        const firstNum = Number(document.getElementById("one").value);
+        const secondNum = Number(document.getElementById("two").value);
+        const output = document.getElementById("output");
+
+        if ((firstNum > 5 && secondNum > 5) || firstNum + secondNum > 20) {
+          output.innerHTML = "True";
+        } else {
+          output.innerHTML = "False";
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    Please enter two numbers:
+    <input type="text" id="one" size="5" />
+    <input type="text" id="two" size="5" />
+    <button type="button" onclick="displayStatement()">Click</button>
+    <div id="output"></div>
+  </body>
+</html>

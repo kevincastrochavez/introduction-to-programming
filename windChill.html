@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Wind Chill</title>
+    <style>
+      body {
+        padding: 30px;
+        height: 100px;
+        width: 232px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      input {
+        width: 100px;
+        padding: 5px;
+        border: 2px solid lightgrey;
+        border-radius: 4px;
+        outline-width: 0;
+      }
+
+      button {
+        padding: 5px;
+        width: 80px;
+        align-self: flex-end;
+        outline-width: 0;
+      }
+    </style>
+    <script>
+      "use strict";
+
+      /* Defining Table
+       * Input: Temperature in Fahrenheit and speed in mph
+       * Processing: With the information introduced, calculate
+       * the wind chill factor with the proper formula
+       * Output: Wind chill factor in °F
+       */
+
+      function doInputOutput() {
+        const temperature = Number(
+          document.getElementById("temperature").value
+        );
+        const wind = Number(document.getElementById("wind").value);
+
+        const result = windChill(temperature, wind).toFixed(1);
+        document.getElementById("output").innerHTML = `${result} °F`;
+      }
+
+      function windChill(tempF, speed) {
+        const windChillFactor =
+          35.74 +
+          0.6215 * tempF -
+          35.75 * speed ** 0.16 +
+          0.4275 * tempF * speed ** 0.16;
+
+        return windChillFactor;
+      }
+    </script>
+  </head>
+  <body>
+    <div class="inputs">
+      <input placeholder="Temperature" id="temperature" />
+      <input placeholder="Wind Speed" id="wind" />
+    </div>
+    <button onclick="doInputOutput()">Wind Chill</button>
+    <div id="output"></div>
+  </body>
+</html>

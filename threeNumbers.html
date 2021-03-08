@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <title>Title</title>
+    <script>
+      "use strict";
+
+      /* Input: three integers introduced by the user
+       * Processing: loop through every integer from the start number
+       to the end number and determine if the current number is evenly 
+       divisible by the divisor (third number) introduced. 
+       * Output: Display those integers separated by spaces
+       */
+
+      function displayIntegers() {
+        const output = document.getElementById("output");
+        const start = Number(document.getElementById("start").value);
+        const end = Number(document.getElementById("end").value);
+        const divisor = Number(document.getElementById("divisor").value);
+
+        let string = "";
+
+        for (let number = start; number <= end; number++) {
+          if (number % divisor == 0) {
+            string += `${number} `;
+          }
+        }
+
+        output.innerHTML = string;
+      }
+    </script>
+  </head>
+
+  <body>
+    Start: <input type="text" id="start" size="5" /><br />
+    End: <input type="text" id="end" size="5" /><br />
+    Divisor: <input type="text" id="divisor" size="5" /><br />
+    <button type="button" onclick="displayIntegers()">Click</button>
+    <div id="output"></div>
+  </body>
+</html>
