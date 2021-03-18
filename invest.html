@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Invest</title>
+    <style>
+      body {
+        padding: 30px;
+      }
+
+      .inputs {
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 350px;
+      }
+
+      .row {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      input {
+        height: 30px;
+        width: 150px;
+        padding-left: 10px;
+        border: 2px solid lightgray;
+        border-radius: 4px;
+        outline-width: 0;
+      }
+
+      button {
+        padding: 5px;
+      }
+    </style>
+    <script>
+      "use strict";
+
+      function doFV() {
+        const displayMessage = document.getElementById("output");
+        const principal = Number(document.getElementById("principal").value);
+        const annualRate = Number(document.getElementById("annualRate").value);
+        const years = Number(document.getElementById("years").value);
+        const periods = Number(document.getElementById("periods").value);
+
+        const result = computeFutureValue(
+          principal,
+          annualRate,
+          years,
+          periods
+        );
+        displayMessage.innerHTML = `$${result}`;
+      }
+
+      function computeFutureValue(
+        principal,
+        annualRate,
+        years,
+        periodsPerYear
+      ) {
+        const interestRate = annualRate / periodsPerYear;
+        const futureValue = (
+          principal *
+          (1 + interestRate) ** (periodsPerYear * years)
+        ).toFixed(2);
+        return futureValue;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Investment Calculator</h1>
+
+    <div class="inputs">
+      <div class="row">
+        <input id="principal" placeholder="Amount Invested" />
+        <input id="annualRate" placeholder="Annual Rate" />
+      </div>
+
+      <div class="row">
+        <input id="years" placeholder="Number of Years" />
+        <input id="periods" placeholder="Periods per Year" />
+      </div>
+
+      <div class="row">
+        <button onclick="doFV()">Compute Future Value</button>
+        <div id="output"></div>
+      </div>
+    </div>
+  </body>
+</html>
