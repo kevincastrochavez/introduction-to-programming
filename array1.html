@@ -33,9 +33,6 @@
           return sum;
         }
 
-        let sum1 = addEnds(list1);
-        let sum2 = addEnds(list2);
-
         function getMiddle(list) {
           if (list.length % 2 === 0) {
             const average =
@@ -48,6 +45,8 @@
           return middleItem;
         }
 
+        let sum1 = addEnds(list1);
+        let sum2 = addEnds(list2);
         let mid1 = getMiddle(list1);
         let mid2 = getMiddle(list2);
 
