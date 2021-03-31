@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Array 2</title>
+    <style>
+      body {
+        padding: 30px;
+      }
+
+      button {
+        width: 100px;
+        padding: 5px;
+        margin-bottom: 30px;
+      }
+    </style>
+    <script>
+      "use strict";
+
+      /* Defining Table
+       * Input: no user input
+       * Processing: Test the countEvens and multiply functions by calling them.
+       * Output: The values returned from the countEvens and multiply functions.
+       */
+
+      function test() {
+        const list1 = [17, 8, 9, 5, 20];
+        const list2 = [12, 4, 8, 15, 17, 5, 20, 11];
+
+        function countEvens(list) {
+          let count = 0;
+
+          for (let i = 0; i < list.length; i++) {
+            if (list[i] % 2 === 0) {
+              count += 1;
+            }
+          }
+
+          return count;
+        }
+
+        function multiply(list, multiplier) {
+          const newArray = list.map((num) => num * multiplier);
+
+          return newArray;
+        }
+
+        const count1 = countEvens(list1);
+        const count2 = countEvens(list2);
+        const mult1 = multiply(list1, 3);
+        const mult2 = multiply(list2, 2);
+
+        const output = `${count1} <br> ${count2} <br> ${mult1} <br> ${mult2}`;
+
+        document.getElementById("output").innerHTML = output;
+      }
+    </script>
+  </head>
+  <body>
+    <button onclick="test()">Button</button>
+    <div id="output"></div>
+  </body>
+</html>
