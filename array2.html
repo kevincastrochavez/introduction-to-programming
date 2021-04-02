@@ -18,8 +18,11 @@
       "use strict";
 
       /* Defining Table
-       * Input: no user input
+       * Input: No user input
        * Processing: Test the countEvens and multiply functions by calling them.
+       * The countEvens checking how many elemnts of the array given are even and
+       * the multiply function returning a new array with each element multiplied
+       * by the multiplier passed
        * Output: The values returned from the countEvens and multiply functions.
        */
 
@@ -40,7 +43,7 @@
         }
 
         function multiply(list, multiplier) {
-          const newArray = list.map((num) => num * multiplier);
+          const newArray = list.map((num) => num * multiplier).join(", ");
 
           return newArray;
         }
